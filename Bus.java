@@ -11,15 +11,15 @@ pubic class Bus
   int hours_this_year; // ?
   int  hours_this_week
 
-  public Driver(int requiredID)
+  public static void Driver(int requiredID)
   {
     driverID = requiredID;
     name = DriverInfo.getName(requiredID);
     holidays_taken = DriverInfo.getHolidaysTaken(requiredID);
     hours_this_year = DriverInfo.getHoursThisYear(requiredID);
     hours_this_week = DriverInfo.getHoursThisWeek(requiredID);
+    System.out.println("What's up?");
 
-
-  }
+  } // Driver
 
 }
