@@ -18,7 +18,8 @@ pubic class Bus
     holidays_taken = DriverInfo.getHolidaysTaken(requiredID);
     hours_this_year = DriverInfo.getHoursThisYear(requiredID);
     hours_this_week = DriverInfo.getHoursThisWeek(requiredID);
-    System.out.println("What's up? nothing");
+    System.out.println("This is a string");
+    System.out.println("This is a string");
 
   } // Driver
 
