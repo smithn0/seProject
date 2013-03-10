@@ -1,26 +1,75 @@
+/*Issues:
+-- java.util.Date or ints for each day?
+-- drivers change buses?  
+-- what is the level of precision for bus availability? Day, hour, minute?
+
+*/
 import java.util.*;
 import static java.util.Calendar.*;
 
-pubic class Bus
+/**
+  *
+  *@author Tomas Cepulis, F16
+  *
+  */
+public class Bus
 {
 
-  int driverID;asd
-  String name;
-  //int number;
-  int holidays_taken;
-  int hours_this_year; // ?
-  int  hours_this_week
+  static int busID;
+  static String busNumber; // fleet number
 
-  public static void Driver(int requiredID)
+  byte[][] availability; // availability for each day at every minute
+
+  int[] dailyHours;  // hours used on every day
+  int weeklyHours; // hours used on this
+ 
+  public Bus(int requiredID)
   {
-    driverID = requiredID;
-    name = DriverInfo.getName(requiredID);
-    holidays_taken = DriverInfo.getHolidaysTaken(requiredID);
-    hours_this_year = DriverInfo.getHoursThisYear(requiredID);
-    hours_this_week = DriverInfo.getHoursThisWeek(requiredID);
-    System.out.println("This is a string");
-    System.out.println("This is a string");
+    busID = requiredID;
+    busNumber = BusInfo.busNumber(requiredID);
 
-  } // Driver
+    availability = new byte [7][1440]; // seven days, each has 1440 minutes
+    dailyHours = new int [7];
+  } // Bus constructor
 
-}
+  public static boolean isAvailable(Date date)
+  {
+    return BusInfo.isAvailable(busID, date);
+  } // isAvailable
+
+  
+
+} // class Bus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
