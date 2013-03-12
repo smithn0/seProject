@@ -5,7 +5,7 @@
 
 */
 import java.util.*;
-import static java.util.Calendar.*;
+import static java.util.Date.*;
 
 /**
   *
@@ -16,7 +16,7 @@ public class Bus
 {
 
   static int busID;
-  static String busNumber; // fleet number
+   String busNumber; // fleet number
 
   byte[][] availability; // availability for each day at every minute
 
@@ -37,7 +37,41 @@ public class Bus
     return BusInfo.isAvailable(busID, date);
   } // isAvailable
 
-  
+  public static String getUsageDay(int day)
+  {
+    
+    String usage = "Bus " + busID + " usage for the day " + day + " of the week\n"; 
+   
+/*
+    int lastBusy = 0;
+    for (int i =0; i < 1440; i++)
+    {
+      if
+      boolean currentlyBusy = availability[day][0];
+
+      while(currentlyBusy)
+      {
+        lastBusy = i;
+      } // while
+
+    } // for*/
+    return usage;
+  } // getUsageDay
+
+  public static String getUsageWeek()
+  {
+
+        String usage = "Bus " + busID + " usage for the week:";
+
+    return usage;
+  } // getUsageWeek 
+
+  public static void setAvailability(Date date, boolean available)
+  {
+      BusInfo.setAvailable(busID, date, available);
+  } // setAvailability
+
+
 
 } // class Bus
 
