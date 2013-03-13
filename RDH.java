@@ -108,7 +108,11 @@ public class RDH extends JFrame implements FocusListener{
         Date testDate = new Date(year-1900, month-1, day);
         if(month < 1 || month > 12)
 	 return false;
+<<<<<<< HEAD
         if(year != 2013)
+=======
+        if(year != database.today().getYear())
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67
 	 return false;
         boolean leapYear =((year % 4) == 0 && ((year % 100) != 0) || (year % 400) == 0);
         int daysInMonth = 31;
@@ -141,8 +145,12 @@ public class RDH extends JFrame implements FocusListener{
 	 return false;
 	}
 	Calendar c = Calendar.getInstance();
+<<<<<<< HEAD
 	c.set(Sdate.getYear(),Sdate.getMonth(),Sdate.getDate());
 	int monthMaxDays = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+=======
+	int monthMaxDays = c.getActualMaximum(Sdate.getDate());
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67
 	int holidayLength;
 	if(Sdate.after(Edate))
 	{
@@ -156,6 +164,7 @@ public class RDH extends JFrame implements FocusListener{
 	int holidaysTaken = DriverInfo.getHolidaysTaken(DriverId);
 	if(holidaysTaken + holidayLength <= 25)
 	{
+<<<<<<< HEAD
 	  //int[] driverIDs = database.busDatabase.select_ids("driver_id" , "holiday_driver", "driver_id");
 	  int[] holidayDriverIDs = database.busDatabase.select_ids("holiday_driver_id", "holiday_driver", "holiday_driver_id");
 	  int[] driverIDs = new int[holidayDriverIDs.length];
@@ -166,6 +175,16 @@ public class RDH extends JFrame implements FocusListener{
 	  {
 	    Sdates[i] = database.busDatabase.get_date("holiday_driver",holidayDriverIDs[i], "start_date");
 	    Edates[i] = database.busDatabase.get_date("holiday_driver",holidayDriverIDs[i], "end_date");
+=======
+	  int[] driverIDs = database.busDatabase.select_ids("driver_id" , "holiday_driver", "driver_id");
+	  Date[] Sdates = new Date[driverIDs.length], Edates = new Date[driverIDs.length];
+	  for (int i=0; i<driverIDs.length; i++)
+	  {
+	    Sdates[i] = database.busDatabase.get_date2("holiday_driver","driver_id", driverIDs[i],
+	    "start_date");
+	    Edates[i] = database.busDatabase.get_date2("holiday_driver","driver_id", driverIDs[i],
+	    "end_date");
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67
 	    if(Edates[i].before(database.today()))
 	      driverIDs[i] = -1;
 	  }
@@ -173,6 +192,7 @@ public class RDH extends JFrame implements FocusListener{
 	  for(int i = 0; i<count.length;i++)
 	    count[i] = 0;
 	  
+<<<<<<< HEAD
 	  for(int i = 0; i < Sdates.length;i++)
 	    System.out.println( " -Sdate: " + Sdates[i].toString() + "-Edate: " + Edates[i].toString());
 	  Date testDate = new Date(Sdate.getYear(), Sdate.getMonth(), Sdate.getDate());
@@ -182,6 +202,15 @@ public class RDH extends JFrame implements FocusListener{
 	    for (int i=0; i<driverIDs.length; i++)
 	    {
 	      if(driverIDs[i] != -1)
+=======
+	  Date testDate = new Date(Sdate.getYear(), Sdate.getMonth(), Sdate.getDate());
+	  for(int j = 0; j<count.length; j++)
+	  {
+	   testDate.setDate(Sdate.getDate() +j);
+	    for (int i=0; i<driverIDs.length; i++)
+	    {
+	    if(driverIDs[i] != -1)
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67
 	     {
 	       //System.out.println("Test Date " + testDate + " , Sdate " + Sdate);
 	       if(((testDate).after(Sdates[i]) || (testDate).equals(Sdates[i])) && ((testDate).before(Edates[i]) || (testDate).equals(Edates[i])))
@@ -215,6 +244,7 @@ public class RDH extends JFrame implements FocusListener{
 	     " sure?" , "Confirmation", JOptionPane.YES_NO_OPTION);
 	 if(reply == JOptionPane.YES_OPTION)
 	 { 
+<<<<<<< HEAD
 	  database.busDatabase.update_record("driver", DriverId, new Object[][] {{"holidays_taken", holidaysTaken + holidayLength }});
 	  database.busDatabase.new_record("holiday_driver", new Object[][] {{"driver_id",DriverId },{"start_date", Sdate},{"end_date", Edate}});
 	  testDate = new Date(Sdate.getYear(), Sdate.getMonth(), Sdate.getDate());
@@ -223,6 +253,9 @@ public class RDH extends JFrame implements FocusListener{
 	    testDate.setDate(Sdate.getDate() +i);
 	    database.busDatabase.new_record("driver_availability", new Object[][] {{"available", 2} , {"day", testDate},{"driver", DriverId}});
 	  }
+=======
+	  database.busDatabase.new_record("holiday_driver", new Object[][] {{"driver_id",DriverId },{"start_date", Sdate},{"end_date", Edate}});
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67
 	  reason.setText("Enjoy your holiday !");
 	  return true;
 	 }
@@ -245,4 +278,8 @@ public class RDH extends JFrame implements FocusListener{
 	
 
 
+<<<<<<< HEAD
    
+=======
+   
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67

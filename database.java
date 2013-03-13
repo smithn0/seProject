@@ -164,12 +164,15 @@ public class database
     if (move_first()) return (Integer)get_field(id_field);
     else return 0;
   }
+<<<<<<< HEAD
     public int find_id2(String id_field, String source, String field1, Object value1)
   {
     select(id_field, source, field1 + " = " + value_string(value1), "");
     if (move_first()) return (Integer)get_field(id_field);
     else return 0;
   }
+=======
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67
 
   public int[] select_ids(String id_field, String source, String order)
   {
@@ -231,7 +234,17 @@ public class database
       return (Date)get_field(field_name);
     else return database.today();
   }
+<<<<<<< HEAD
 
+=======
+  public java.util.Date get_date2(String table,String field, int id, String field_name)
+  {
+    select(field_name, table, field + " = " + id, "");
+    if (move_first())
+      return (Date)get_field(field_name);
+    else return database.today();
+  }
+>>>>>>> a0d33e9df43455a7a4ef54fb7471f40e503b5e67
   public static String join(String referring_table, String referenced_table, String referring_field)
   {
     return referring_table + " Inner Join " + referenced_table + " On (" + referenced_table + "." + referenced_table + "_id = " + referring_table + "." + referring_field + ")";

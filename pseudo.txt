@@ -1,0 +1,26 @@
+get timetable for the week
+get drivers for the week ( instances of Driver class in some data structure)
+get busses for the week ( instances of Bus class in some data structure)
+// get routes for the week? Not sure about this
+  for every day of the week
+  {
+    for each route on that day
+    {
+      while route is not fully serviced
+      {
+        select driver();  // we should use an algorithm for selection to assign duties as fairly as possible. Initially it could be sequential.
+        select bus();
+        assign the driver and bus for a maximum available part of the route
+        update route 
+    }
+  }
+
+
+Driver assignment for a part of the route:
+{
+  assign a driver to work till the last stop at depot under 5 hours.
+  update driver details // sort by hours worked in ascending order
+  update bus details
+}
+
+
