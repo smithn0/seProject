@@ -40,7 +40,9 @@ public class Roster
       {
        if(availableDrivers[z] && drivers[z].timetable.checkHourlyAvailability(currentDate.getDate(),serviceTiming[j][0],serviceTiming[j][serviceIDs.getSize()-1]))
        {
-         driverID = drivers[z];
+         //if(DriverInfo.getHoursThisWeek(drivers[z]) < 40) //less than 40 so driver can work a full 10 hour shift that day
+           driverID = drivers[z];
+           //DriverInfo.setHoursThisWeek(drivers[z])
        }
       }
       for(int z = 0;z < drivers.length; z++)
